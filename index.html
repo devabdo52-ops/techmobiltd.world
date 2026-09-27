@@ -1,459 +1,127 @@
 <!DOCTYPE html>
-<html lang="en" class="dark scroll-smooth">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>tech mobi ltd | People For Playground 2</title>
-    <meta name="description" content="Official website and compliance portal for People For Playground 2 developed by tech mobi ltd.">
-    <!-- Tailwind CSS CDN -->
+    <title>tech mobi ltd | Mobile Game Development Studio</title>
+    <meta name="description" content="Official website of tech mobi ltd, developers of People For Playground 2 and mobile gaming experiences.">
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script>
         tailwind.config = {
-            darkMode: 'class',
             theme: {
                 extend: {
                     colors: {
-                        brand: {
-                            50: '#f0fdf4',
-                            500: '#22c55e',
-                            600: '#16a34a',
-                            700: '#15803d',
-                            900: '#14532d',
-                            accent: '#8b5cf6',
-                            accentDark: '#6d28d9'
-                        }
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
+                        brand: { 500: '#6366f1', 600: '#4f46e5', 700: '#4338ca' },
+                        dark: { 800: '#1e293b', 900: '#0f172a', 950: '#020617' }
                     }
                 }
             }
         }
     </script>
-    <!-- Google Font Inter & FontAwesome Icons -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        body { font-family: 'Inter', sans-serif; }
-        .glass-panel {
-            background: rgba(15, 23, 42, 0.85);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-        }
-        .glow-effect {
-            box-shadow: 0 0 25px -5px rgba(34, 197, 94, 0.35);
-        }
-    </style>
 </head>
-<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col justify-between selection:bg-brand-500 selection:text-slate-950">
+<body class="bg-dark-950 text-slate-200 font-sans antialiased min-h-screen flex flex-col justify-between">
 
-    <header class="sticky top-0 z-40 w-full border-b border-slate-800/80 glass-panel">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-            <a href="#hero" class="flex items-center gap-3 group">
-                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 to-brand-accent flex items-center justify-center text-white font-bold text-xl shadow-lg group-hover:scale-105 transition-transform">
-                    <i class="fa-solid font-black">T</i>
+    <!-- Header / Navigation -->
+    <header class="sticky top-0 z-40 bg-dark-900/80 backdrop-blur-md border-b border-slate-800">
+        <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 to-indigo-400 flex items-center justify-center font-bold text-white text-xl shadow-lg shadow-brand-500/20">
+                    T
                 </div>
                 <div>
-                    <span class="text-lg font-bold tracking-tight text-white block leading-tight">tech mobi ltd</span>
-                    <span class="text-xs text-brand-500 font-mono">techmobiltd.world</span>
+                    <h1 class="text-lg font-bold text-white tracking-wide leading-none">tech mobi ltd</h1>
+                    <p class="text-xs text-slate-400 mt-1">Official Studio Portal</p>
                 </div>
-            </a>
-
-            <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
-                <a href="#about" class="text-slate-300 hover:text-brand-500 transition-colors">About Us</a>
-                <a href="#games" class="text-slate-300 hover:text-brand-500 transition-colors">Our Games</a>
-                <a href="#app-ads" onclick="openAdsModal(event)" class="text-amber-400 hover:text-amber-300 flex items-center gap-1.5 bg-amber-500/10 border border-amber-500/30 px-3 py-1.5 rounded-lg transition-all">
-                    <i class="fa-solid fa-file-code"></i> app-ads.txt
-                </a>
-                <button onclick="openModal('privacyModal')" class="text-slate-300 hover:text-brand-500 transition-colors">Privacy Policy</button>
-                <button onclick="openModal('termsModal')" class="text-slate-300 hover:text-brand-500 transition-colors">Terms of Service</button>
-            </nav>
-
-            <div class="hidden sm:flex items-center gap-3">
-                <a href="https://play.google.com/store/apps/details?id=com.ragdoll.stickman.playground.studio" target="_blank" rel="noopener" class="bg-gradient-to-r from-brand-600 to-brand-700 hover:from-brand-500 hover:to-brand-600 text-white text-xs sm:text-sm font-semibold px-4 py-2.5 rounded-xl shadow-lg transition-all flex items-center gap-2 glow-effect">
-                    <i class="fa-brands fa-google-play text-lg"></i>
-                    <span>Google Play</span>
-                </a>
             </div>
-
-            <button onclick="toggleMobileMenu()" class="md:hidden p-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800">
-                <i class="fa-solid fa-bars text-xl" id="menuIcon"></i>
-            </button>
-        </div>
-
-        <div id="mobileMenu" class="hidden md:hidden border-b border-slate-800 bg-slate-900/95 px-4 pt-2 pb-6 space-y-3">
-            <a href="#about" onclick="toggleMobileMenu()" class="block text-slate-300 hover:text-brand-500 py-2">About Us</a>
-            <a href="#games" onclick="toggleMobileMenu()" class="block text-slate-300 hover:text-brand-500 py-2">Our Games</a>
-            <a href="#app-ads" onclick="toggleMobileMenu(); openAdsModal(event)" class="block text-amber-400 font-medium py-2"><i class="fa-solid fa-file-code mr-2"></i>app-ads.txt Helper</a>
-            <button onclick="toggleMobileMenu(); openModal('privacyModal')" class="block w-full text-left text-slate-300 hover:text-brand-500 py-2">Privacy Policy</button>
-            <button onclick="toggleMobileMenu(); openModal('termsModal')" class="block w-full text-left text-slate-300 hover:text-brand-500 py-2">Terms of Service</button>
-            <a href="https://play.google.com/store/apps/details?id=com.ragdoll.stickman.playground.studio" target="_blank" rel="noopener" class="inline-flex w-full items-center justify-center gap-2 bg-brand-600 text-white py-3 rounded-xl font-semibold text-sm">
-                <i class="fa-brands fa-google-play"></i> Play Store Page
-            </a>
+            <nav class="hidden md:flex items-center gap-6 text-sm font-medium">
+                <a href="#about" class="text-slate-300 hover:text-white transition">About</a>
+                <a href="#games" class="text-slate-300 hover:text-white transition">Games</a>
+                <a href="/app-ads.txt" target="_blank" class="text-amber-400 hover:text-amber-300 font-mono transition flex items-center gap-1">
+                    <i class="fa-solid fa-shield-halved text-xs"></i> app-ads.txt
+                </a>
+                <a href="#contact" class="px-4 py-2 bg-brand-600 hover:bg-brand-500 text-white rounded-lg transition shadow-md">Contact Us</a>
+            </nav>
         </div>
     </header>
 
-    <main class="flex-grow">
-        <section id="hero" class="relative py-16 lg:py-24 overflow-hidden border-b border-slate-800/60">
-            <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-brand-500/10 blur-[120px] rounded-full pointer-events-none"></div>
-
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                <div class="grid lg:grid-cols-12 gap-12 items-center">
-                    
-                    <div class="lg:col-span-7 text-center lg:text-left">
-                        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-800/80 border border-slate-700/80 text-xs text-brand-500 font-semibold mb-6">
-                            <span class="w-2 h-2 rounded-full bg-brand-500 animate-pulse"></span>
-                            Verified Developer Portal
-                        </div>
-                        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-tight mb-6">
-                            Ragdoll Physics <span class="bg-gradient-to-r from-brand-500 to-brand-accent bg-clip-text text-transparent">Sandbox Gaming</span>
-                        </h1>
-                        <p class="text-lg text-slate-300 mb-8 leading-relaxed max-w-2xl mx-auto lg:mx-0">
-                            <strong>tech mobi ltd</strong> presents <strong>People For Playground 2</strong> — an interactive ragdoll simulation sandbox packed with custom tools, physics experimentation, and continuous gameplay updates.
-                        </p>
-                        
-                        <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
-                            <a href="https://play.google.com/store/apps/details?id=com.ragdoll.stickman.playground.studio" target="_blank" rel="noopener" class="w-full sm:w-auto bg-gradient-to-r from-brand-600 to-brand-700 hover:from-brand-500 hover:to-brand-600 text-white font-bold px-8 py-4 rounded-xl shadow-xl transition-all flex items-center justify-center gap-3 text-base glow-effect">
-                                <i class="fa-brands fa-google-play text-xl"></i>
-                                <span>Get on Google Play</span>
-                            </a>
-                            <button onclick="openAdsModal(event)" class="w-full sm:w-auto bg-slate-900 border border-slate-700 hover:border-amber-500/50 text-slate-200 hover:text-amber-400 font-semibold px-6 py-4 rounded-xl transition-all flex items-center justify-center gap-2 text-base">
-                                <i class="fa-solid fa-file-code text-amber-500"></i>
-                                <span>View app-ads.txt</span>
-                            </button>
-                        </div>
-
-                        <div class="mt-10 pt-8 border-t border-slate-800/80 grid grid-cols-3 gap-4 text-center lg:text-left">
-                            <div>
-                                <span class="text-2xl font-black text-white block">800+</span>
-                                <span class="text-xs text-slate-400">Downloads</span>
-                            </div>
-                            <div>
-                                <span class="text-2xl font-black text-brand-500 block">170+</span>
-                                <span class="text-xs text-slate-400">Monthly Players</span>
-                            </div>
-                            <div>
-                                <span class="text-2xl font-black text-white block">PEGI 12</span>
-                                <span class="text-xs text-slate-400">Rating</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="lg:col-span-5">
-                        <div class="relative max-w-sm mx-auto">
-                            <div class="relative rounded-2xl bg-slate-900 border border-slate-800 p-6 shadow-2xl space-y-6">
-                                <div class="flex items-center gap-4">
-                                    <div class="w-20 h-20 rounded-2xl bg-gradient-to-br from-brand-600 to-slate-900 p-1 flex-shrink-0 shadow-lg border border-brand-500/30">
-                                        <div class="w-full h-full bg-slate-950 rounded-xl flex items-center justify-center">
-                                            <i class="fa-solid fa-gamepad text-4xl text-brand-500"></i>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <h3 class="text-xl font-bold text-white leading-snug">People For Playground 2</h3>
-                                        <p class="text-xs text-slate-400 font-mono mt-1 break-all">com.ragdoll.stickman.playground.studio</p>
-                                        <span class="inline-block mt-2 px-2.5 py-0.5 rounded text-[10px] font-bold tracking-wide uppercase bg-brand-500/10 text-brand-500 border border-brand-500/20">
-                                            Simulation
-                                        </span>
-                                    </div>
-                                </div>
-
-                                <div class="bg-slate-950/80 rounded-xl p-4 border border-slate-800/80 space-y-2 text-xs">
-                                    <div class="flex justify-between text-slate-400">
-                                        <span>Developer Entity:</span>
-                                        <span class="text-white font-semibold">tech mobi ltd</span>
-                                    </div>
-                                    <div class="flex justify-between text-slate-400">
-                                        <span>Official Domain:</span>
-                                        <a href="https://techmobiltd.world" class="text-brand-500 hover:underline">techmobiltd.world</a>
-                                    </div>
-                                    <div class="flex justify-between text-slate-400">
-                                        <span>Verification Status:</span>
-                                        <span class="text-emerald-400 font-mono font-bold flex items-center gap-1">
-                                            <i class="fa-solid fa-circle-check text-[10px]"></i> Verified
-                                        </span>
-                                    </div>
-                                </div>
-
-                                <a href="https://play.google.com/store/apps/details?id=com.ragdoll.stickman.playground.studio" target="_blank" rel="noopener" class="block text-center w-full py-3 bg-slate-800 hover:bg-slate-700 text-white rounded-xl text-sm font-semibold transition-colors border border-slate-700">
-                                    View in Store <i class="fa-solid fa-arrow-up-right-from-square text-xs ml-1"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
+    <!-- Hero Section -->
+    <main class="max-w-6xl mx-auto px-4 py-12 flex-grow w-full">
+        <section id="about" class="text-center py-12">
+            <span class="px-3 py-1 bg-brand-500/10 border border-brand-500/30 text-brand-400 rounded-full text-xs font-semibold tracking-wider uppercase mb-4 inline-block">Mobile Game Studio</span>
+            <h2 class="text-4xl md:text-6xl font-black text-white tracking-tight max-w-3xl mx-auto leading-tight">
+                Crafting Next-Gen Physics & Ragdoll Experiences
+            </h2>
+            <p class="text-slate-400 text-lg mt-4 max-w-2xl mx-auto">
+                At <strong class="text-slate-200">tech mobi ltd</strong>, we design interactive mobile games focused on realistic physics simulations and creativity.
+            </p>
+            <div class="mt-8 flex justify-center gap-4">
+                <a href="#games" class="px-6 py-3 bg-brand-600 hover:bg-brand-500 text-white font-semibold rounded-xl transition shadow-lg shadow-brand-600/30">Explore Our Games</a>
+                <a href="/app-ads.txt" target="_blank" class="px-6 py-3 bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold rounded-xl border border-slate-700 transition flex items-center gap-2">
+                    <i class="fa-solid fa-file-code text-amber-400"></i> View app-ads.txt
+                </a>
             </div>
         </section>
 
-        <section class="py-6 bg-slate-900/90 border-b border-slate-800">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="flex flex-col md:flex-row items-center justify-between gap-4 bg-slate-950 p-4 sm:p-6 rounded-2xl border border-amber-500/30">
-                    <div class="flex items-center gap-4">
-                        <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-500 flex items-center justify-center flex-shrink-0 border border-amber-500/20">
-                            <i class="fa-solid fa-shield-halved text-2xl"></i>
-                        </div>
-                        <div>
-                            <h2 class="text-base font-bold text-white flex items-center gap-2">
-                                AppLovin MAX & Ad Network Crawler Portal
-                                <span class="bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 text-[10px] uppercase font-bold px-2 py-0.5 rounded-full">Ready for Indexing</span>
-                            </h2>
-                            <p class="text-xs text-slate-400 mt-0.5">
-                                Verified app-ads.txt file available at <code class="text-amber-400 bg-slate-900 px-1.5 py-0.5 rounded border border-slate-800">https://techmobiltd.world/app-ads.txt</code>.
-                            </p>
-                        </div>
+        <!-- Featured App Showcase -->
+        <section id="games" class="py-12 border-t border-slate-800/80">
+            <h3 class="text-2xl font-bold text-white mb-8 flex items-center gap-2">
+                <i class="fa-solid fa-gamepad text-brand-500"></i> Featured Game
+            </h3>
+
+            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 md:p-8 flex flex-col md:flex-row gap-8 items-center">
+                <div class="w-32 h-32 md:w-40 md:h-40 rounded-2xl bg-slate-800 border border-slate-700 flex-shrink-0 flex items-center justify-center shadow-2xl">
+                    <i class="fa-solid fa-cubes-stacked text-5xl text-brand-400"></i>
+                </div>
+                <div class="flex-grow text-center md:text-left">
+                    <div class="flex flex-wrap items-center justify-center md:justify-start gap-2 mb-2">
+                        <h4 class="text-2xl font-bold text-white">People For Playground 2</h4>
+                        <span class="px-2 py-0.5 bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 rounded text-xs">Active on Play Store</span>
                     </div>
-                    <div class="flex items-center gap-3 w-full md:w-auto">
-                        <a href="/app-ads.txt" target="_blank" class="flex-1 md:flex-initial text-center bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold px-4 py-2.5 rounded-xl text-xs transition-colors shadow-lg">
-                            <i class="fa-solid fa-external-link mr-1"></i> Open /app-ads.txt
+                    <p class="text-xs font-mono text-slate-400 mb-4">Package ID: com.ragdoll.stickman.playground.studio</p>
+                    <p class="text-slate-300 text-sm leading-relaxed mb-6">
+                        An immersive sandbox simulation game built around realistic ragdoll physics, custom object interactions, and creative experimentations.
+                    </p>
+                    <div class="flex flex-wrap gap-4 justify-center md:justify-start">
+                        <a href="https://play.google.com/store/apps/details?id=com.ragdoll.stickman.playground.studio" target="_blank" class="px-5 py-2.5 bg-slate-800 hover:bg-slate-700 text-white rounded-lg border border-slate-700 text-sm font-semibold transition flex items-center gap-2">
+                            <i class="fa-brands fa-google-play text-emerald-400"></i> Get it on Google Play
                         </a>
-                        <button onclick="openAdsModal(event)" class="flex-1 md:flex-initial text-center bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 font-bold px-4 py-2.5 rounded-xl text-xs transition-colors">
-                            <i class="fa-solid fa-copy mr-1"></i> Copy Strings
-                        </button>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="about" class="py-16 bg-slate-950 border-b border-slate-800/80">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="grid md:grid-cols-2 gap-12 items-center">
-                    <div>
-                        <span class="text-brand-500 font-semibold text-xs uppercase tracking-wider">About The Studio</span>
-                        <h2 class="text-3xl font-extrabold text-white mt-2 mb-4">tech mobi ltd</h2>
-                        <p class="text-slate-400 text-sm sm:text-base leading-relaxed mb-4">
-                            <strong>tech mobi ltd</strong> is a dedicated mobile game publisher focusing on engaging physics, sandbox, and simulation games for global mobile platforms.
-                        </p>
-                        <p class="text-slate-400 text-sm sm:text-base leading-relaxed mb-6">
-                            Our official communications, ad monetization compliance, and technical support are centralized via our official domain <strong>techmobiltd.world</strong> and dedicated email address <strong>contact@techmobiltd.world</strong>.
-                        </p>
-                        <div class="p-4 bg-slate-900 rounded-xl border border-slate-800 space-y-2 text-xs">
-                            <div class="flex items-center gap-2 text-slate-300">
-                                <i class="fa-solid fa-envelope text-brand-500"></i>
-                                <span>Official Support Email: <a href="mailto:contact@techmobiltd.world" class="text-brand-500 hover:underline font-mono">contact@techmobiltd.world</a></span>
-                            </div>
-                            <div class="flex items-center gap-2 text-slate-300">
-                                <i class="fa-solid fa-globe text-brand-500"></i>
-                                <span>Official Domain: <a href="https://techmobiltd.world" class="text-brand-500 hover:underline font-mono">techmobiltd.world</a></span>
-                            </div>
-                        </div>
-                    </div>
+        <!-- Developer Verification & Publisher Information -->
+        <section id="contact" class="py-12 border-t border-slate-800/80">
+            <h3 class="text-2xl font-bold text-white mb-8 flex items-center gap-2">
+                <i class="fa-solid fa-building text-brand-500"></i> Publisher & Verification Information
+            </h3>
 
-                    <div class="grid grid-cols-2 gap-4">
-                        <div class="bg-slate-900 p-6 rounded-2xl border border-slate-800 text-center">
-                            <i class="fa-solid fa-cubes text-3xl text-brand-500 mb-3"></i>
-                            <h3 class="text-white font-bold text-base mb-1">Physics Engine</h3>
-                            <p class="text-slate-400 text-xs">Real-time dynamic collision physics.</p>
-                        </div>
-                        <div class="bg-slate-900 p-6 rounded-2xl border border-slate-800 text-center">
-                            <i class="fa-solid fa-shield-check text-3xl text-brand-accent mb-3"></i>
-                            <h3 class="text-white font-bold text-base mb-1">COPPA & GDPR</h3>
-                            <p class="text-slate-400 text-xs">Full privacy protection compliance.</p>
-                        </div>
-                        <div class="bg-slate-900 p-6 rounded-2xl border border-slate-800 text-center">
-                            <i class="fa-solid fa-rectangle-ad text-3xl text-amber-500 mb-3"></i>
-                            <h3 class="text-white font-bold text-base mb-1">AppLovin MAX</h3>
-                            <p class="text-slate-400 text-xs">Optimized ad mediation integration.</p>
-                        </div>
-                        <div class="bg-slate-900 p-6 rounded-2xl border border-slate-800 text-center">
-                            <i class="fa-brands fa-google-play text-3xl text-emerald-400 mb-3"></i>
-                            <h3 class="text-white font-bold text-base mb-1">Google Play</h3>
-                            <p class="text-slate-400 text-xs">Official store listing & verification.</p>
-                        </div>
-                    </div>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="bg-slate-900/60 border border-slate-800 p-6 rounded-xl">
+                    <h4 class="text-slate-400 text-sm font-medium mb-1">Entity Name</h4>
+                    <p class="text-xl font-bold text-white">tech mobi ltd</p>
+                    <p class="text-xs text-slate-500 mt-2">Registered Mobile Game Development Organization</p>
+                </div>
+                <div class="bg-slate-900/60 border border-slate-800 p-6 rounded-xl">
+                    <h4 class="text-slate-400 text-sm font-medium mb-1">Official Publisher Contact</h4>
+                    <p class="text-xl font-bold text-brand-400 font-mono">contact@techmobiltd.world</p>
+                    <p class="text-xs text-slate-500 mt-2">Used for developer verification on Google Play Console and AppLovin MAX</p>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer class="bg-slate-950 border-t border-slate-800 text-xs text-slate-400 py-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-                <div class="md:col-span-2 space-y-3">
-                    <div class="flex items-center gap-2">
-                        <div class="w-7 h-7 rounded-lg bg-brand-600 flex items-center justify-center text-white font-bold text-sm">T</div>
-                        <span class="text-base font-bold text-white">tech mobi ltd</span>
-                    </div>
-                    <p class="text-slate-400 leading-relaxed max-w-md">
-                        Official game studio website for People For Playground 2 (com.ragdoll.stickman.playground.studio).
-                    </p>
-                    <p class="text-slate-500 font-mono">
-                        Domain: techmobiltd.world | Contact: contact@techmobiltd.world
-                    </p>
-                </div>
-
-                <div>
-                    <h4 class="text-white font-semibold mb-3">Legal & Compliance</h4>
-                    <ul class="space-y-2">
-                        <li><button onclick="openModal('privacyModal')" class="hover:text-brand-500 transition-colors">Privacy Policy</button></li>
-                        <li><button onclick="openModal('termsModal')" class="hover:text-brand-500 transition-colors">Terms of Service</button></li>
-                        <li><a href="/app-ads.txt" target="_blank" class="text-amber-400 hover:underline">/app-ads.txt File</a></li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h4 class="text-white font-semibold mb-3">Store Links</h4>
-                    <ul class="space-y-2">
-                        <li><a href="https://play.google.com/store/apps/details?id=com.ragdoll.stickman.playground.studio" target="_blank" rel="noopener" class="hover:text-brand-500 transition-colors"><i class="fa-brands fa-google-play mr-1"></i> People For Playground 2</a></li>
-                        <li><a href="mailto:contact@techmobiltd.world" class="hover:text-brand-500 transition-colors"><i class="fa-solid fa-envelope mr-1"></i> Developer Email</a></li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="pt-8 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-4">
-                <p>&copy; 2026 tech mobi ltd. All Rights Reserved.</p>
-                <div class="flex items-center gap-4 text-slate-500">
-                    <span class="inline-flex items-center gap-1 text-emerald-400"><i class="fa-solid fa-shield-check"></i> AppLovin MAX & Play Store Verified</span>
-                </div>
+    <!-- Footer -->
+    <footer class="bg-dark-900 border-t border-slate-800 py-8">
+        <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-slate-400">
+            <p>© 2026 tech mobi ltd. All rights reserved.</p>
+            <div class="flex items-center gap-6">
+                <a href="/app-ads.txt" target="_blank" class="hover:text-slate-200 transition">app-ads.txt</a>
+                <a href="mailto:contact@techmobiltd.world" class="hover:text-slate-200 transition">Contact</a>
             </div>
         </div>
     </footer>
 
-    <div id="adsModal" class="fixed inset-0 z-50 hidden bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-4">
-        <div class="bg-slate-900 border border-slate-700 w-full max-w-2xl rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
-            <div class="px-6 py-4 border-b border-slate-800 flex items-center justify-between bg-slate-950">
-                <div class="flex items-center gap-2 text-amber-400 font-bold text-base">
-                    <i class="fa-solid fa-file-code"></i>
-                    <span>app-ads.txt Tool</span>
-                </div>
-                <button onclick="closeAdsModal()" class="text-slate-400 hover:text-white p-1 rounded-lg">
-                    <i class="fa-solid fa-xmark text-lg"></i>
-                </button>
-            </div>
-
-            <div class="p-6 overflow-y-auto space-y-4">
-                <p class="text-xs text-slate-300">
-                    This file is hosted at <a href="/app-ads.txt" target="_blank" class="text-amber-400 underline font-mono">techmobiltd.world/app-ads.txt</a> to verify <strong>tech mobi ltd</strong> for <strong>com.ragdoll.stickman.playground.studio</strong>.
-                </p>
-
-                <div class="relative">
-                    <pre id="adsContent" class="bg-slate-950 text-emerald-400 font-mono text-xs p-4 rounded-xl border border-slate-800 overflow-x-auto leading-relaxed select-all"># Official app-ads.txt for tech mobi ltd
-# Domain: techmobiltd.world
-# Package: com.ragdoll.stickman.playground.studio
-
-# AppLovin MAX
-applovin.com, YOUR_ACCOUNT_ID, DIRECT, 0b815610ec1f2ec4
-
-# Google AdMob / Ad Manager
-google.com, pub-XXXXXXXXXXXXXXXX, DIRECT, f08c47fec0942fa0</pre>
-                </div>
-
-                <div id="copySuccessMsg" class="hidden text-xs text-emerald-400 font-semibold flex items-center gap-1.5 bg-emerald-500/10 border border-emerald-500/30 p-2.5 rounded-lg">
-                    <i class="fa-solid fa-circle-check"></i> app-ads.txt copied to clipboard!
-                </div>
-            </div>
-
-            <div class="px-6 py-4 border-t border-slate-800 bg-slate-950 flex flex-wrap items-center justify-end gap-3">
-                <a href="/app-ads.txt" target="_blank" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold rounded-xl border border-slate-700 transition-colors">
-                    <i class="fa-solid fa-arrow-up-right-from-square mr-1"></i> Open URL
-                </a>
-                <button onclick="copyAdsTxt()" class="px-5 py-2 bg-amber-500 hover:bg-amber-600 text-slate-950 text-xs font-bold rounded-xl transition-colors flex items-center gap-1.5">
-                    <i class="fa-solid fa-copy"></i> Copy Text
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <div id="privacyModal" class="fixed inset-0 z-50 hidden bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-4">
-        <div class="bg-slate-900 border border-slate-700 w-full max-w-3xl rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
-            <div class="px-6 py-4 border-b border-slate-800 flex items-center justify-between bg-slate-950">
-                <h3 class="text-lg font-bold text-white">Privacy Policy</h3>
-                <button onclick="closeModal('privacyModal')" class="text-slate-400 hover:text-white"><i class="fa-solid fa-xmark text-lg"></i></button>
-            </div>
-            <div class="p-6 overflow-y-auto space-y-4 text-xs text-slate-300 leading-relaxed">
-                <p><strong>Effective Date:</strong> September 27, 2026</p>
-                <p>This Privacy Policy explains how <strong>tech mobi ltd</strong> ("we", "us") collects and uses information regarding our app <strong>People For Playground 2</strong> (Package ID: <code>com.ragdoll.stickman.playground.studio</code>) and website <strong>techmobiltd.world</strong>.</p>
-                
-                <h4 class="text-sm font-bold text-white mt-4">1. Information Collection & Advertising</h4>
-                <p>We use third-party advertising partners including <strong>AppLovin MAX</strong> and <strong>Google AdMob</strong>. These services collect device identifiers (AAID, IP address) to serve relevant advertisements.</p>
-
-                <h4 class="text-sm font-bold text-white mt-4">2. Children's Privacy (COPPA)</h4>
-                <p>Our app does not knowingly collect personal information from children under 13. If you believe data has been inadvertently collected, contact us immediately at <strong>contact@techmobiltd.world</strong>.</p>
-
-                <h4 class="text-sm font-bold text-white mt-4">3. Contact Us</h4>
-                <p>For inquiries or data requests, email us at <a href="mailto:contact@techmobiltd.world" class="text-brand-500 underline">contact@techmobiltd.world</a>.</p>
-            </div>
-            <div class="px-6 py-4 border-t border-slate-800 bg-slate-950 text-right">
-                <button onclick="closeModal('privacyModal')" class="px-5 py-2 bg-brand-600 text-white rounded-xl text-xs font-bold">Close</button>
-            </div>
-        </div>
-    </div>
-
-    <div id="termsModal" class="fixed inset-0 z-50 hidden bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-4">
-        <div class="bg-slate-900 border border-slate-700 w-full max-w-3xl rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
-            <div class="px-6 py-4 border-b border-slate-800 flex items-center justify-between bg-slate-950">
-                <h3 class="text-lg font-bold text-white">Terms of Service</h3>
-                <button onclick="closeModal('termsModal')" class="text-slate-400 hover:text-white"><i class="fa-solid fa-xmark text-lg"></i></button>
-            </div>
-            <div class="p-6 overflow-y-auto space-y-4 text-xs text-slate-300 leading-relaxed">
-                <p><strong>Effective Date:</strong> September 27, 2026</p>
-                <p>By using <strong>People For Playground 2</strong> or visiting <strong>techmobiltd.world</strong>, you agree to these Terms of Service provided by <strong>tech mobi ltd</strong>.</p>
-                <h4 class="text-sm font-bold text-white mt-4">1. License</h4>
-                <p>We grant you a non-transferable license to use the app for personal, non-commercial entertainment.</p>
-            </div>
-            <div class="px-6 py-4 border-t border-slate-800 bg-slate-950 text-right">
-                <button onclick="closeModal('termsModal')" class="px-5 py-2 bg-brand-600 text-white rounded-xl text-xs font-bold">Close</button>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        function toggleMobileMenu() {
-            const menu = document.getElementById('mobileMenu');
-            const icon = document.getElementById('menuIcon');
-            if (menu.classList.contains('hidden')) {
-                menu.classList.remove('hidden');
-                icon.classList.remove('fa-bars');
-                icon.classList.add('fa-xmark');
-            } else {
-                menu.classList.add('hidden');
-                icon.classList.remove('fa-xmark');
-                icon.classList.add('fa-bars');
-            }
-        }
-
-        function openModal(id) {
-            document.getElementById(id).classList.remove('hidden');
-        }
-
-        function closeModal(id) {
-            document.getElementById(id).classList.add('hidden');
-        }
-
-        function openAdsModal(event) {
-            if (event) event.preventDefault();
-            document.getElementById('adsModal').classList.remove('hidden');
-        }
-
-        function closeAdsModal() {
-            document.getElementById('adsModal').classList.add('hidden');
-            document.getElementById('copySuccessMsg').classList.add('hidden');
-        }
-
-        function copyAdsTxt() {
-            const content = document.getElementById('adsContent').innerText;
-            const el = document.createElement('textarea');
-            el.value = content;
-            document.body.appendChild(el);
-            el.select();
-            document.execCommand('copy');
-            document.body.removeChild(el);
-
-            const msg = document.getElementById('copySuccessMsg');
-            msg.classList.remove('hidden');
-            setTimeout(() => {
-                msg.classList.add('hidden');
-            }, 3000);
-        }
-
-        window.onclick = function(e) {
-            if (e.target.classList.contains('bg-slate-950/80')) {
-                closeAdsModal();
-                closeModal('privacyModal');
-                closeModal('termsModal');
-            }
-        };
-    </script>
 </body>
 </html>
