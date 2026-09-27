@@ -1,0 +1,5 @@
+# Official app-ads.txt for tech mobi ltd
+# Domain: techmobiltd.world
+# Package: com.ragdoll.stickman.playground.studio
+
+# Pending AppLovin MAX Account Setup
